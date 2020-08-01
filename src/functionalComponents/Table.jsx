@@ -11,21 +11,22 @@ import planetAction from '../conditionFunction/planetAction';
 import './style/Table.css';
 
 const Table = () => {
-  const { onLoad, callAPI, data, dataMockFilterOn,
-   dataMock, setFilters, setDataMockFilter, setDataMock, filters } = useContext(StarWarsContext);
+  const {
+    onLoad, callAPI, data, dataMockFilterOn,
+    dataMock, setFilters, setDataMockFilter, setDataMock, filters,
+  } = useContext(StarWarsContext);
 
   useEffect(() => {
     callAPI();
   }, []);
   if (!onLoad) return (<div style={{ textAlign: 'center' }}><h1>Loading...</h1></div>);
   return (
-    <React.Fragment>
+    <>
       <div className="container-header">
         <input
           type="text"
           data-testid="planet-search"
-          onChange={(e) =>
-          planetAction(e.target.value, data, dataMock,
+          onChange={(e) => planetAction(e.target.value, data, dataMock,
             setFilters, setDataMockFilter, setDataMock, filters, dataMockFilterOn)}
         />
         <SelectDropDown />
@@ -38,7 +39,7 @@ const Table = () => {
         <HeadTable />
         {dataMockFilterOn ? <CellFiltered /> : <CellTable />}
       </table>
-    </React.Fragment>
+    </>
   );
 };
 

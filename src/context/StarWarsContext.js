@@ -28,22 +28,22 @@ const StarWarsProvider = ({ children }) => {
 
   const callAPI = () => {
     getEndPointSwAPI()
-    .then(
-      (datas) => {
-        setData(datas.results);
-        setDataMockFilter(datas.results);
-        return setDataMock(datas.results);
-      },
-      (errors) => setError(errors.message),
-    );
+      .then(
+        (datas) => {
+          setData(datas.results);
+          setDataMockFilter(datas.results);
+          return setDataMock(datas.results);
+        },
+        (errors) => setError(errors.message),
+      );
     setOnLoad(true);
   };
 
   const removeFilter = (valColumn) => {
     const newNumeric = filters.filter((element) => {
       const isValid = (Object.keys(element).includes('numericValues'))
-      ? element.numericValues.column !== valColumn
-      : element;
+        ? element.numericValues.column !== valColumn
+        : element;
       return isValid;
     });
     filterCondition(newNumeric, data, setDataMock, setDataMockFilter);

@@ -1,12 +1,12 @@
 const getEndPointSwAPI = () => (
-  fetch('https://swapi-trybe.herokuapp.com/api/planets/')
+  fetch('https://swapi.dev/api/planets/')
     .then((response) => (
       response
         .json()
         .then((json) => (
-            response.ok
-                ? Promise.resolve(json)
-                : Promise.reject(json)))
+          response.ok
+            ? Promise.resolve(json)
+            : Promise.reject(json)))
     ))
 );
 
